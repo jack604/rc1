@@ -1,0 +1,36 @@
+Rails:
+Convention over configuration:
+
+hur follow man convention?
+
+learn it once, know what to expect next time.
+
+why user rails:
+Database abstraction layer
+no need to deal with low level DB details
+no more SQL (almost)
+important to udnerstand the SQL generated!
+
+ORM object-relational mapping mapping your database to your ruby classes.
+
+Also:
+agile friendly
+modular (can change components in rails)
+
+#sqlLite
+uses slqlite by default. (not a lot of configuration)
+
+MVC: model view controller (pattern)
+
+model: det man modellerar typ.
+view: visual representation (html, json, xml, android?)
+controller: interaction between between model and view
+
+why: (separation of concerns), kan typ reuse och ev. change components typ.
+
+
+
+
+
+
+

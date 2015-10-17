@@ -1,0 +1,10 @@
+---
+- !ruby/object:Person
+  name: Fred Bloggs
+  age: 45
+- !ruby/object:Person
+  name: Laura Smith
+  age: 23
+- !ruby/object:Person
+  name: Bob n Ra<
+  age: 18

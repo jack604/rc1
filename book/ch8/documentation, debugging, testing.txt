@@ -1,0 +1,94 @@
+??? Hur hanterar man divide by zero till exempel? Kanske beror på t.ex. om input från miniräknare så skriv kan ej dela med noll och återgå till prompten typ.
+Om i ett program och det "inte ska hända"... kanske skriva ut information (ev. kedjan till hur zero dök upp) och frysa programmet och ev. fråga efter manuell override av denna zero.
+
+Although developers have always been expected to leave comments in their code,
+true documentation of a quality such that other developers and users can understand it
+without seeing the source code has had less importance.
+
+documentation utility RDoc:
+Document Generator for Ruby Source, creates structured HTML documentation
+
+The way you document your code in a way that RDoc can use is to leave comments prior to the definition of 
+the class, method, or module you want to document.
+Avoid documentation: #:nodoc:
+också #:nodoc: all för udner-grejer också.
+#++ and #-- turn rdoc processing on or off.
+
+RDoc doesn’t process comments that are within methods, so your usual code comments are not used in the documentation produced.
+
+run:
+rdoc <name of source file>.rb, like so:
+rdoc person.rb
+
+kan också rdoca en hel katalog (om man specificerar . eller helt skippar att ange en fil så processas current directory)
+
+se sid 207 för command line options.
+ev. kör rdoc --help
+
+RDoc recognizes formatting:
+#== Heading
+#* first item outer list
+#  * first item inner list.
+m.m.
+
+
+?? sid 204 paragraphs within comments?
+
+mer info om rdoc: http://rdoc.sourceforge.net/doc/
+
+
+Debugging and Errors:
+
+An exception is an event that occurs when an error arises within a program.
+In Ruby, exceptions are packaged into objects of class Exception or one of Exception’s many subclasses. Ruby has about 30 main predefined exception classes
+
+!!Bra förklaring av exceptions:
+When an exception is raised (exceptions are said to be raised when they occur within the execution of a program), Ruby immediately looks back up the tree of routines that called the current one (known as the stack) and looks for a routine that can handle that particular exception. If it can’t find any error handling routines, it quits the program with the raw error message.
+
+Ruby can raise exceptions automatically when you perform incorrect functions, and you can raise exceptions from your own code too. You do this with the raise method and by using an existing exception class, or by creating one of your own that inherits from the Exception class.
+One of the standard exception classes is ArgumentError, which is used when the arguments provided to a method are fatally flawed. You can use this class as an exception if bad data is supplied to a method of your own (se exempel sid 209).
+
+Always provide a message and a class with raise, if possible.
+
+At this point, it might seem meaningless as to why raising different types of exceptions is useful. The reason is so that you can handle different exceptions in different ways with your error handling code.
+
+Exception handling (when minor errors occur):
+begin
+puts 10 / 0
+rescue
+puts "You caused an error!"
+end
+
+being inside a block containing a rescue section means that the exception is handled by the code inside that rescue section
+
+!!OBS! This can become important in programs that rely on external sources of data. sid 210
+
+handling different types of errors:
+begin
+... code here ...
+rescue ZeroDivisionError
+... code to rescue the zero division exception here ...
+rescue YourOwnException
+... code to rescue a different type of exception here ...
+rescue
+... code that rescues all other types of exception here ...
+end
+
+Using info provided by the exception:
+rescue => e
+Exception information is passed to e and can be used in the rescue section.
+
+Catch and Throw:
+Ok, vet inte riktigt vad detta var till för men ok.
+catch(:finish) do
+1000.times do
+x = rand(1000)
+throw :finish if x == 123
+end
+puts "Generated 1000 random numbers without generating 123!"
+end
+så fort throw anropas så avbryts catch ... do-blocket, den hoppar till end direkt.
+Man kan anropa throw inom en metod också. Vet inte om man kan vara typ helt utanför catch-scopet eller bara någonstans under det. Nej man måste vara innuti för annars så... spelar det ingen roll, man behöver inte avsluta ett catch-block om man redan är utanför det.
+
+Citat från kapitel ?:
+The quality of the documentation, error handling, and tests associated with a program or section of code demonstrates the professionalism of the developer and the program.

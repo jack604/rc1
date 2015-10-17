@@ -1,0 +1,47 @@
+If action method is empty, it can be removed.
+As long as proper route defined and properly named view file/template,
+the action method does not have to be there and Rails will find the correct tempalte by convention.
+(from controller class)
+
+View should have as little ruby code logic as possible.
+
+moving business logic out:
+def hello
+	random_names=["a","b","c"]
+	@name = random_names.sample
+	@time = Time.now
+	@times_displayed ||= 0
+	@times_displayed +=1
+	end
+end
+
+Ok skillnad från t.ex. Servlets (java) kan man inte lagra variabelvärden mellan requests i controller-delen.
+alternativ:
+sessions (http session)
+database
+
+instance variables in the controller are available to view.
+??? model då?
+
+? ev. kolla igen ca 1:10 i videon w3.06 eller vad det var (helpers)
+Helpers:
+format how the time looks:
+in view? but: not reusable
+controller? should be "view format" agnostic.
+
+Helpers to the rescue:
+helpers are view helpers.
+code goes into view but should be reusable so separate ruby class.
+(skapas när man kör rails generate eller vad det hette).
+
+methods inside helpers are available to any view in application (also to any controller typ).
+
+använd:
+straight forward, bara anropa metoden i view-filen.
+
+Rails provides build in helpers (helper methods): ?? kolla igen ?? helpers 4:20 ca.
+link_to name, path
+when using link_to => no need to change things if a path changes.
+
+??6:00 rake paths ??
+

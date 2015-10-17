@@ -1,0 +1,3 @@
+Rails:
+Convention over configuration:
+

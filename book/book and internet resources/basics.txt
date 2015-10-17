@@ -1,0 +1,47 @@
+Kolla igen, closuers:
+Viktigt, förstå cloures:
+http://www.elonflegenheimer.com/2012/07/08/understanding-ruby-closures.html
+(remembers the context in which it was defined and remembers that context whenever it is called)
+Also, blocks is an example of closuers.
+
+???vad betyder drop-in replacement? 2:30 lecture 15
+
+Behöver lära sig att tänka sådär lite functional programming-aktigt. t.ex. 
+sentences_sorted = sentences.sort_by { |sentence| sentence.length }
+att man inte tänker implicit programmering utan... att ... känns lite som att det är en mix mellan implicit syntax och functional programming med variabeln där |sentence| men jag antar att den bara är till för att demostrera vilken ... man använder elementen i arrayen för villkoren typ eller vad man ska säga. Man måste kunna "jobba" på elementen i blocket.
+om blocket skulle vara { random() } då? det skulle väl gå men arrayen skulle bli slumpvist ordnad typ.
+sort_by-metoden sorterar på... nummer? finns det något mer som kan sorteras på? strängar (eller första bokstaven?)
+Gör ett test: Ok, testade i book_projects\summarize.rb och det verkade vara som jag tänkte.
+
+Application framework:
+An application framework is a set of conventions, structures, and systems that provide an underlying structure to make application development easier. Ruby on Rails is such a framework for Web application development.
+
+http://zetcode.com/lang/rubytutorial/datatypes/
+
+Ruby has several data types. All data types are based on classes. The following are the data types recognized in Ruby:
+
+Booleans
+Symbols
+Numbers
+Strings
+Arrays
+Hashes
+
+Creating data objects:
+Hash:
+h = { :name => "Jane", :age => 17 }
+
+Arrays and Hashes:
+Arrays and hashes are collections of objects. They group objects into one place.
+Arrays are ordered collections of objects. Hashes are collections of key-value pairs.
+
+Create an Array:
+nums = [1, 2, 3, 4]
+words = []
+word[0]="hello"
+word[1]="world"
+Alltså man måste skapa arrayen ( words = [] ) innan man kan sätta in värden i den.
+
+Create a Hash:
+domains = { :de => "Germany", :sk => "Slovakia", :us => "United States", :no => "Norway" }
+

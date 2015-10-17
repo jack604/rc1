@@ -1,0 +1,8 @@
+Modules
+To create namespaces.
+
+name conflict, se sid 157
+
+det kan vara flera module scopes inom samma fil.
+
+Mix-ins

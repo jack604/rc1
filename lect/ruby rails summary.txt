@@ -1,0 +1,78 @@
+Saker kvar: kör rspec med phantomjs, fungerade inte på windows out of the box och inte verkar det fungera i linux heller därför, så länge som det inte finns instruktioner för att få det att fungera så låter jag det vara tills phantomjs har blivit lite stabilare i alla fall. Ev. kolla de tidigare lektionerna om detta program igen ändå.
+
+Kolla mer git.
+
+Fråga: vart hamnade mina filer som jag laddade upp till heroku?
+hur fixar man en databas till heroku?
+
+important fixes (för windows okt 2015):
+Gemfile add (alltså vad man behöver fixa efter standard-generating rails-app):
+gem 'coffee-script-source', '1.8.0'
+annars fungerar inte dynamiska sidor typ.
+
+vet inte om 
+gem 'httparty', '0.13.5'
+ska vara med också.
+
+se till att ha denna med:
+gem 'tzinfo-data'
+
+Det var fler saker...
+Det var något när man installerade ruby har jag för mig och att det inte gick att installera sker med gem eller vad det var.
+
+
+ruby och rails summary:
+Run ruby:
+ruby rubyscript	executes rubyscript
+
+configuration:
+rbenv ? enligt week 3 black box testing så om man använder rbenv så varje gång man installerar ett gem som har en executable (t.ex. rspec) måste man köra rbenv rehash?
+gem install 	installerar ruby packages.
+bundle	när ska man köra bundle? ok, om man har uppdaterat Gemfile t.ex. (alltså kör i rooten en av rails-applikation)
+rails new	skapar ett rails-projekt.
+
+git:
+git init
+git add .
+git commit #? -am vad är det -m är message men -a? typ skip automatically stagin, behöver inte stagea typ.
+git push?
+git status	#kollar det man ändrat sedan sist. (observera att om man lagt till nya filer måste man köra git add tror jag.)
+vad betyder stage files i samband med git?
+ev. kolla http://githowto.com/staging_changes
+för att skicka nytt till heroku: git status; git commit -am "comment" ; vit push heroku master
+git remote -v #listar om man har remote ställen för git-projektet typ. (kör från en katalog där du kört git init typ.)
+
+
+testing:
+rspec init
+selenium (automates browsers, and browsing)
+poltergeist gem
+phantomjs (installed in module 1)
+
+packages used so far (gems):
+HTTParty
+rspec
+använde en annan script coffe-någonting-gem. en tidigare version. Annars fungerade det inte i windows.
+
+
+Deploy:
+heroku (det var något som behövdes installeras också)
+heroku toolbelt, cli tool for managing your heroku applications
+
+
+Annat:
+rake: rubys motsvarighet till make typ. (också syntax typ)
+
+??
+rails_12factor	typ sqlite-gem som krävs av heroku
+xpath?
+
+exempel för installation av en del:
+  $ gem install rspec
+  $ gem install selenium-webdriver
+  $ gem install capybara
+  $ gem install poltergeist
+
+  Också vanliga saker:
+  dokumentationen för gems brukar finnas i git-repositorien typ. professorn brukar hänvisa dit hela tiden.
+

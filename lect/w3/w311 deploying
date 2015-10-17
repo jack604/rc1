@@ -1,0 +1,31 @@
+Deploying to heroku:
+(jag tror det finns mer info någonstans, kan vara i my_first_app-källkoden.)
+
+heroku toolbelt, cli tool for managing your heroku applications
+
+skilj på production och development environment:
+
+i gemfile, vill ha postgresql därför rails_12factor gem.
+group:production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
+
+vad var det mer...
+
+group :development, :test do
+	gem 'byebug'
+	gem 'web-console', '~> 2.0'
+	gem 'spring'
+end
+
+#hmm.. vad gör spring?
+
+byebug är real debugger typ. kolla github för mer info om web-console och byebug.
+
+sedan heroku create myappname
+creates a remote git repository
+
+git remote -v #listar mina remote repositories kör från app-katalogen. eller git-katalogen.
+
+se till att vara i railsappens root-katalog för att heroku ska kunna förstå vad det är man skickar upp.

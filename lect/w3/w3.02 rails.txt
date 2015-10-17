@@ -1,0 +1,41 @@
+creating your first app:
+
+W3.02 includes:
+How to create and run app
+Directory structure (CoC, convension over config)
+Add static pages to app
+
+frågor och kommentarer:
+typ git repository och deploying?
+Det här med CoC var intressant, skulle kanske vara bra att veta det för den andra java web programming-kursen typ.
+? 8:40 db 		files related to your db and migration "scripts"
+? frågor 10.00 ca (ok, förklarades kort efteråt)
+
+
+
+Create first app:
+cmd: rails new my_first_app (creates my_first_app application in my_first_app directory) rails new -h for more options
+bundler (gems manager typ hämtar needed dependencies, mer senare.)
+(git repo should be INSIDE the app directory, har med dit man ska deploy så att dir structure blir rätt, i detta fall heroku, mer senare. Alltså typ git repository och deploying?)
+
+get a complete web structure and some basic code, also
+Rails provides a build-in web server.
+
+run with: rails server (or rails s) (run in another terminal in the background)
+OBS behöver inte restart server efter att man gjort ändringar i sin app, bara spara appen och refresh web page typ.
+Några rader med info i början t.ex. url, version running.
+
+(Bra info på intro rails-sidan också dokumentation-länkar)
+
+
+Directory structure (viktiga):
+app 	huvudkatalogen, MVC and helpers.
+config	configuration files (which DB? and user names and passwords to these databases)
+db 		files related to your db and migration "scripts" (change from one database snapshot to another)  (också själva db-filen om man använder sqlite)
+public	static files (html-files t.ex)
+Gemfile, Gemfile.lock specifies dependencies and interactions between those dependencies (gems?).
+
+public /hello_static.html
+web server looks in public directory before looking anywhere else.
+? förstod inte riktigt 10.00 ca
+

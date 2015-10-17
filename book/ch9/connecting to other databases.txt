@@ -1,0 +1,2 @@
+DBI typ något från perl, lättvikt istället för ORM Object Relational Mapping?
+Vad är ODBC? Eller JDBC? Ev. kolla också Data access wikipedia.

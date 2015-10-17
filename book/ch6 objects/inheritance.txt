@@ -1,0 +1,78 @@
+Konstiga frågor: vad händer om man skriver kod i root-nivån i en klass alltså utanför någon metod?
+
+Get stuff from super class with keyword super (142)
+T.ex. en superklasss getter kan anropas med ... om bara super används så anropas samma metod som superklassens metod med samma namn?
+bra för att undvika repitition.
+Också minns DRY don't repeat yourself
+
+Also overriding. (var varsam om man ska definiera om vad metoderna gör.) Vet inte riktigt hur det går till med typ olika lager eller olika scope typ.
+
+add methods to class. se källkod.
+
+Reflection, change standard language and library funcionality while program is running.
+
+.methods and .instance_variables
+
+Basics från ruby course:
+instance variables begins with @
+OBS! in ruby springs to exsistance when first used. Hur hanterar man det?
+Once sprung into existance then available to all instance methods of the class.
+
+Använda alla instance variables i initialize-method för att skapa dem direkt. new method calles initialize method automatiskt. (lektionen säger: All the states of an object (all instance variables) should be initialized inside the initialize method.)
+
+Skillnad på instance variables (@myvar) och automatic variables (myvar) är automatic försvinner när man går ur scopet t.ex. går ur en metod medans instansvariablerna är kvar typ.
+
+instance variables are private så man måste ha getters and setters (methods have public access by default)
+
+man kan döpa getters och setters till vad som helst men finns en standard:
+för @name t.ex.
+def name
+	@name
+end
+
+def name=(newname)
+	@name=newname
+end
+
+Förklaring av varför använda self:
+det är när man anropar en age=-metod från en annan metod inom klassen T.ex. man anropar en setter-metod.
+så self.age= är ett anrop till egna setter-metoden för age. Om man inte använder self.age så tror det att man försöker skapa en ny (temporar automatisk) variabel age. Men om man har parentes efter då?
+fungerar om man använder perenteser för settern. annars måste man använda self.
+alltså om setter används utanför så behövs inte self men om en setter används inom klassen så behövs det där med self. innan.
+
+attr-metoderna:
+attr_accessor båda, attr_reader, attr_writer
+
+attr_accessor :name, :age, :info
+
+start 45 min sid 146 stop sid 156 med distraktioner.
+20 min sid 156-160
+10 min:
+
+45 min igen:
+start? 181 end 186, hmm... vet ej riktigt om sidorna stämmer, borde kunna göra snabbare framsteg än det.
+nästa steg: the standard library och ruby gems.
+45 min:
+45 min 187-197 hmm... varför så långsamt?
+45 min 198-212 lite snabbare men några toma sidor. Men också den fruktade exceptions-sektionen i boken.
+senare debugger och testing:
+hittills idag 10 okt: 3 45 min pass.
+15 min extra.
+45 min: 217-237, dock skippade några sidor. 5 st udner benchmarking och profiling.
+20 min: 238.244
+
+
+Encapsulation:
+protected: you can call a protected method from the scope of the methods of any object that’s a member of the same class: Kolla exempel sid 151
+alltså inom definitionen av en klass så får objekt av sin egen klass använda dessa metoder.
+Frågan är bara varför är det bra?
+
+Polymorphism:
+i detta exempel sid 152 så är det bara att metodnamn för olika klasser har samma namn och så anropas denna metod i en loop. Men metoderna hör ju till en egen klass så inte lika imponerande typ.
+Skulle vara intressant hur man t.ex. adderar två saker av olika klass t.ex. integer och complex number.
+
+Nested classes, define classes inside other classes.
+access nested classes from outside with t.ex.:
+Drawing::Line the ::-operator.
+Tror felskrivet sid 154.
+

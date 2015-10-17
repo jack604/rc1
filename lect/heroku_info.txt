@@ -1,0 +1,34 @@
+Frågor: hur createar man en egen git remote ställe? I Heroku skapades en automatiskt, är det vanligt eller?
+
+mina ställen:
+https://ola-search-coursera-jhu.herokuapp.com/ | https://git.heroku.com/ola-search-coursera-jhu.git
+
+Kommandon för att få det att fungera:
+
+flrst
+>heroku login
+
+
+C:\Users\odat\Documents\programming and development\rails_course1\lab\lectures\my_first_app>git init
+Initialized empty Git repository in C:/Users/odat/Documents/programming and development/rails_course1/lab/lectures/my_first_app/.git/
+
+C:\Users\odat\Documents\programming and development\rails_course1\lab\lectures\my_first_app>git add .
+
+C:\Users\odat\Documents\programming and development\rails_course1\lab\lectures\my_first_app>git commit -m "initial commit"
+[master (root-commit) d95680d] initial commit
+
+
+C:\Users\odat\Documents\programming and development\rails_course1\lab\lectures\my_first_app>heroku create ola2-search-coursera-jhu
+Creating ola2-search-coursera-jhu... done, stack is cedar-14
+https://ola2-search-coursera-jhu.herokuapp.com/ | https://git.heroku.com/ola2-search-coursera-jhu.git
+Git remote heroku added
+
+C:\Users\odat\Documents\programming and development\rails_course1\lab\lectures\my_first_app>git remote -v
+heroku  https://git.heroku.com/ola2-search-coursera-jhu.git (fetch)
+heroku  https://git.heroku.com/ola2-search-coursera-jhu.git (push)
+
+git push heroku master
+
+sedan kolla typ på:
+
+https://ola2-search-coursera-jhu.herokuapp.com/courses/index

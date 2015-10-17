@@ -1,0 +1,192 @@
+I/O streams are the basis for all input and output in Ruby.
+An I/O stream is a conduit or channel for input and output operations between one resource and another.
+
+Input from keyboard:
+a = gets
+puts a
+
+
+STANDARD INPUT AND OUTPUT, vanligtvis från tangentbordet men kan ändras t.ex. i linux med
+ruby test.rb < somedata.txt
+här är kommer standars input från somedata.txt 
+liknande for output.
+sid 230
+
+Read multiple lines:
+lines = readlines
+
+readlines accepts line after line of input until a terminator, most commonly known as EOF (End Of File), is found. You can create EOF on most platforms by pressing Ctrl+D.
+When the terminating line is found, all the lines of input given are put into an array that’s assigned to lines.
+
+Unkommon to use readlines with keyboard, used mostly with files.
+
+File I/O
+For opening and reading files, File.new and File.open appear identical, but they have different uses. File.open can accept a code block, and once the block is finished, the file will be closed automatically. However, File.new only returns a File object referring to the file.
+
+Dir::pwd to see where in the directory tree you are.
+
+You could also choose to assign the file handle to a class or instance variable:
+
+You can read an I/O stream with each using a custom delimiter of your choosing:
+File.open("text.txt").each(',') { |line| puts line }
+
+You can override the default delimiter by setting the special variable $/ to any delimiter you choose
+
+Read byte by byte:
+File.open("text.txt").each_byte { |byte| puts byte }
+you get integers, not characters.
+
+.gets isn’t an iterator like each or each_byte. Therefore, you have to call it multiple times to get multiple lines.
+Can accept an optional delimiter.
+
+också non iterative byte reading with .getc
+
+??read an entire file into an array, split by lines, using readlines:
+puts File.open("text.txt").readlines.join("--")
+
+
+read an arbitrary number of bytes from a file into a single variable using read:
+puts f.read(6)
+
+You can use all these methods on any file, such as binary files not just text files.
+
+Convenience methods:
+data = File.read(filename)
+array_of_lines = File.readlines(filename)
+reads entire file.
+
+.pos method, gets position within a file.
+
+Writing to files:
+File.open("text.txt", "w") do |f|
+f.puts "This is a test"
+end
+creates of overwrite text.txt
+
+other file modes:
+r read only
+r+ read and write (the file pointer is placed at the beginning of the file)
+skrivs det över eller flyttas det fram?
+w write only
+w+ read and write, creates new file or overwrites previous file entierly.
+a append to file (good for t.ex. log files)
+a+ append, reading is also allowed.
+b binary modes, only for windows, used in conjunction with any previous mode listed.
+
+obs:
+"It’s worth noticing that putc and write overwrite existing content in the file rather than inserting it, as puts does."
+
+Renaming and Deleting Files
+File.rename("file1.txt", "file2.txt")
+delete:
+File.delete("file2.txt", "file3.txt", "file4.txt")
+File.unlink("file1.txt")
+obs: File.unlink does exactly the same thing as File.delete.
+
+File class more methods:
+Checking whether two files are identical is easy:
+puts "They're identical!" if File.identical?("file1.txt", "file2.txt")
+
+
+Pathname platform specifics:
+In recent versions of Ruby, it’s possible to use Unix-style pathnames using forward slashes as directory separators, rather than having to format filenames in a Windows style with backslashes. However, this section is included for completeness, or for instances where you need to work with libraries that don’t respect Unix-style pathnames on other operating systems.
+
+om det behövs, kolla mer om t.ex.
+File.join method sid 241.
+File.join(File::SEPARATOR , 'full', 'path', 'here', 'filename.txt')
+File::SEPARATOR ställs in per operativsystem automatiskt, denna är optional.
+
+getting complete path to filename:
+File.expand_path("text.txt")
+
+More positioning:
+If you want to move the pointer forward by a certain offset or move the pointer to a certain position backwards from the end of the file, you need to use seek.
+IO::SEEK_
+CUR	from current pos
+END from end of file
+SET absolute positioning
+
+t.ex:
+f.seek(-5, IO::SEEK_END)
+
+Last modified?
+puts File.mtime("text.txt")
+puts t.hour
+puts t.min
+puts t.sec
+
+Does file exist?
+File.exist?
+puts "It exists!" if File.exist?("file1.txt")
+
+filesize:
+puts File.size("text.txt")
+
+end of file:
+
+f = File.new("test.txt", "r")
+catch(:end_of_file) do
+	loop do
+		throw :end_of_file if f.eof?
+	puts f.gets
+	end
+end
+f.close
+This specific example is not particularly useful, as f.each could have performed a similar task, but in situations where you might be moving the file pointer around manually, or making large jumps through a file, checking for an “end of file” situation is useful.
+
+Directories:
+files are handled with the File-class, directories with the DIR-class.
+
+change directory:
+Dir.chdir("/usr/bin")
+get current directory:
+puts Dir.pwd
+
+list files and directory listed in a directory:
+puts Dir.entries("/usr/bin").join(' ')
+
+An even more concise way of getting directory listings is by using Dir’s class array method:
+Dir["/usr/bin/*"]
+(for platform independence: Dir[File.join(File::SEPARATOR, 'usr', 'bin', '*')], se dock till att katalogen finns också)
+
+Dir.foreach provides the same feature, but as an iterator:
+Dir.foreach("/usr/bin") do |entry|
+puts entry
+end
+
+Create directory:
+Dir.mkdir("mynewdir") (absolute and relative pathways can also be specified)
+
+can't create with the mkdir -p equivalent in linux.
+
+In Unix-like:
+Dir.mkdir("mynewdir", 0777) #octal number for permissions.
+
+Delete with:
+Dir.delete("testdir")
+Dir.unlink and Dir.rmdir perform exactly the same function and are provided for convenience
+if dir not empty, must delete everything in directory first.
+have to iterate through entire tree typ.
+
+Temporary directory and files:
+lite komplicerat, kolla sid 247
+
+require 'tmpdir'
+puts Dir.tmpdir
+
+use temp-dir to create temporary files.
+require 'tmpdir'
+tempfilename = File.join(Dir.tmpdir, "myapp.dat") #hmm... join-metoden, är det bara till för vanliga string-operations? Vilken join-metod som helst skulle fungera typ? eller? Nej, join är till för att joina sökvägar specifikt.
+tempfile = File.new(tempfilename, "w")
+tempfile.puts "This is only temporary"
+tempfile.close
+File.delete(tempfilename)
+
+Också, kan behöva close file innan ändringar börjar gälla.
+
+Tempfile class files are deleted after closing them, hur fungerar buffer eller vad man ska säga då? När börjar förändringarna gälla? Mer info om temp-files i kapitel 16 stod det i boken:
+require 'tempfile'
+f = Tempfile.new('myapp')
+f.puts "Hello"
+puts f.path
+f.close

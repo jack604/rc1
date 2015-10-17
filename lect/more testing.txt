@@ -1,0 +1,16 @@
+more testing:
+black box testing:
+rspec+capybara gems
+
+capybara cross platform?
+
+
+typ vanliga rspec men använder capybara.
+behöver få igång capibara och resten var mycket likt vanliga rspec.
+
+gör tester utan att firefox behöver öppnas:
+phantomJS browser without display.
+poltergeist capybara's phantomJS driver.
+
+
+Det är till för att t.ex. testa typ 

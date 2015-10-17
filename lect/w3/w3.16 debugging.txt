@@ -1,0 +1,3 @@
+Om man får ett error i lokala servern så har man en consol längst nere som man kan interagera med servern och rails-appen. man kan kolla variabelvärden, man kan anropa funktioner bl.a.
+
+Vart ska man lägga olika funktionalitet exemplet i debug-videon.

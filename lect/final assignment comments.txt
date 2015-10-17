@@ -1,0 +1,11 @@
+Sista assignmenten kommentarer:
+ok, det ända bundlen innehåll var rspec-tester och en Gemfile, man var tvungen att skapa sin egen rails-app och sedan använda dessa två saker (det var bara att kopiera de aktuella filerna (och ev ersätta de som redan var där och sedan köra bundle update för att aktuallisera Gemfile))´Detta var inte helt tydligt i dokumentationen (utspritt över flera ställen)
+
+Fråga: kan man ha servern igång och samtidigt köra rspec-test?
+
+2 generate controller: rails generate controller recipe index
+rails generate controller (som det låter) sedan recipe blir recipe_controller.rb och index en method i klassen i recipe_controller.rb
+namnet på klassen blir RecipeController (automatiskt)
+
+(jag var tvungen att sätta in gem 'tzinfo-data' i Gemfile sökte på tzinfo som stod i error-meddelandet och sedan hittade instruktioner där. Jag kommer att använda orginal-Gemfile när jag submittar assignmenten)
+

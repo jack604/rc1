@@ -1,0 +1,18 @@
+Databases:
+first single file data organization:
+CSV, Comma-Separated Values:
+Each line represents a different person, and commas separate the attributes relating to each person. The commas allow you to access (and change) each attribute separately. Ruby’s standard library includes a library called csv that allows you to use text files containing CSV data as simple databases that are easy to read, create, and manipulate.
+
+require 'csv'
+CSV.open('text.txt', 'r') do |person|
+puts person.inspect
+end
+
+
+??????? fattade inte typ första exemplet sid 249
+
+You’re also forced to store simple arrays for each separate entry. There’s no nesting,
+no way to relate one thing to another, no relationship to object orientation, and the data
+is flat. This is ideal for basic data, but what if you simply want to take data that already
+exists in Ruby data structures such as arrays and hashes and save that data to disk for
+later use?

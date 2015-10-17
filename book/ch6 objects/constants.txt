@@ -1,0 +1,3 @@
+variabler som börjar med stor bokstav är konstanter.
+Konstanter är synliga för varje sub-scope men är ej globala variabler. (Går också att skriva över dem i sub-scopes, vet inte om det går i samma scope dock.)
+Man kan komma åt konstanter från andra klasser direkt också. Classname::Constant

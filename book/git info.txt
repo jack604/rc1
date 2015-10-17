@@ -1,0 +1,63 @@
+push an pull between repositories, vad är repositories?
+create repository with git init.
+ convert an existing, unversioned project to a Git repository ? vad betyder det?
+
+ General workflow:
+ 1 create or clone a repository (repo)
+ 2 add changes to staging area
+ 3 commit changes (from staging area to local repository)
+ 4 push changes from local to remote repository
+ 
+
+ ? vad är staging area? vad är commit changes?
+
+git add . (adderar filer till en staging area.)
+sedan kör git commit -m "message" för att spara staging-area-filerna till local repository.
+
+git status
+
+branches:
+senare typ.
+
+git add:
+add untracked files to be tracked or
+add a modified tracked file to the staging area
+
+if you have made changes, you must run add again to stage these changes (only the directory exactly when you ran git add will be saved.)
+
+git diff
+shows difference between staging and working directory
+
+track files, stage files, commit files, work on files.
+-a skip stagin area alltså behöver inte köra git add
+fråga, -a vad addas då för om man kör git add . så addas allt även nya untracked files till staging area typ.
+med -a så addas inte nya filer för tracking (och sedan hamnar i staging area)
+
+
+before commiting:
+git checkout .
+ re-checkout all tracked files overwriting local changes...
+ Ok vad händer här? senaste commiten klonas till working directory eller?
+typ discard changes in working directory.
+
+after committing:
+git revert HEAD
+reverts to the most recent commit.
+
+
+--- Interacting with remote repositories ---
+
+set up remote repository:
+git remote add alias <remote_url>
+(link the local and remote repository together)
+
+origin - default alias for cloned repository
+
+git push alias branch_name
+t.ex. git push origin master (origin default name for cloned dir, master default name for main branch)
+push changes to your branch (master) out. 
+
+
+ resources:
+ git pro (free git book)
+ git reference (gitref.org)

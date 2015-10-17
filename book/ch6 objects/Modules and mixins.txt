@@ -1,0 +1,19 @@
+Modules
+To create namespaces.
+
+name conflict, se sid 157
+
+det kan vara flera module scopes inom samma fil.
+
+Mix-ins
+it can be useful to share functionality between disparate classes.
+Istället för multiple inheritance så mix-ins: In this sense, modules act like a sort of “super” class and can 
+be included into other classes, extending that class with the methods the module offers.
+Alltså man ärver funktionalitet från super-klassen och man kan ärva funktionalitet från flera super-klasser fast man använder mix-ins och då ärver man allt som en hel module innehåller, inte en klass typ.
+"extending that class with the methods the module offers"
+
+Så en klass kan få extra funktionalitet från en module (genom nyckeordet include)
+
+I exemplet sid 159 innehåller den inkluderade modulen bara metoder, inga klasser. Jag vet inte hur det fungerar med ärvda klasser typ. Kanske som nested classes bara.
+
+(man kan också inkludera direkt i root-scopet (vilet är typ en definition av en klass i sig.))

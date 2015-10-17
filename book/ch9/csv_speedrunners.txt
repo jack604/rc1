@@ -1,0 +1,4 @@
+Name,url,skill,country,main games
+sinisterwon,www.twitch.tv/sinisterwon,3,USA,Mike Tysons Punch Out;Turtles IV
+dxtr,www.twitch.tv/dxtrslab,4,SWE,Batman;Trojan;Duck Tales
+ohon,www.twitch.tv/ohonta,5,JPN,Mega Man 5;Ninja Gaiden

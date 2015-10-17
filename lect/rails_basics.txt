@@ -1,0 +1,100 @@
+Bra termer att kunna (som verkar vara vanliga i web application frameworks):
+Convention over configuration
+DRY don't repeat yourself
+MVC
+Sköta configureringen i själva koden.
+Dependency injection verkar inte vara vanligt i ruby
+
+deployment and rollback.
+
+?Agile? values expressed in the Agile Manifesto as a set of four preferences:
+• Individuals and interactions over processes and tools
+• Working software over comprehensive documentation	(hmm... vet inte riktigt om den här...)
+• Customer collaboration over contract negotiation
+• Responding to change over following a plan
+
+
+OBS:
+"Rails was extracted from a real-world, commercial application. It turns out
+that the best way to create a framework is to find the central themes in a
+specific application and then bottle them up in a generic foundation of code.
+When you’re developing your Rails application, you’re starting with half of a
+really good application already in place."
+
+Gör det att det är mindre generellt då eller? Rails alltså.
+
+
+The strong, almost obsessive, way that Rails honors the DRY principle means that changes to Rails applications impact a lot less code than the same changes would in other frameworks.
+Ok, menar lite typ automatisk decoupling?
+
+?fixtures and stubs?
+
+"As you read through the tutorial chapters, try to imagine yourself developing web applications this
+way: working alongside your customers and jointly determining priorities and
+solutions to problems."
+
+examine your installation using the following command:
+>rake about
+
+?tracing?
+
+start server:
+>rails server
+WEBrick is rails standard server (if other installed that may perhaps be automattically used instead)
+Later, as we write application code and run it via our browser, we’ll be able to use this console window to trace the incoming requests. When the time comes to shut down your application, you can press Ctrl-C
+
+vänj dig med model view controller för rails använder det hela tiden typ.
+
+use a generator script to create a new controller for our project
+to create a controller called say, we make sure we’re in the demo directory and run the command, passing in the name of the controller we want to create and the names of the actions we intend for this controller to support:
+>rails generate controller Say hello goodbye
+typ skapar och ändrar filer
+
+t.ex. the controller som genereras i:
+app/controllers/say_controller.rb
+
+OBS:
+Like any other web application, a Rails application appears to its users to be
+associated with a URL. When you point your browser at that URL, you are
+talking to the application code, which generates a response to you.
+Let’s try it now. Navigate to the URL http://localhost:3000/say/hello in a
+browser window. (Note that in the development environment we don’t have
+any application string at the front of the path—we route directly to the controller.)
+You’ll see something that looks like this:
+
+
+
+Steps få igång (i windows)
+Först fixa ett error (sept 2015) i filen Gemfile (roodkatalogen) lägg till raden:
+gem 'coffee-script-source', '1.8.0'
+sedan kör bundle igen.
+ev. generera actions med t.ex.: 
+rails generate controller Say hello #skapar två viktiga filer en controller och en viewer (se loggen i början). Dessutom ändras config/routes.db (lägger in get 'Say/hello')
+>rails server #startar servern
+öppna sidan localhost:3000/Say/hello
+
+sedan, för att ändra filen, ändra i /app/views/Say/hello.html.erb
+vanlig html med extra syntax för ruby code: (ERB is a templating library that lets you embed ruby into your HTML)
+<% ..- ruby code .. %> - evaluate ruby code, t.ex. skapa variabel eller något.
+<%= ..- ruby code .. %> - output evaluated ruby code. Jag tror att det är bara som att visa eller inte visa. Nästan som echo on och echo off typ.
+
+Hur app works (se sid 24 i rails-boken för bakgrundsinfo)
+The user navigates to our application. In our case, we do that using a local
+URL such as http://localhost:3000/say/hello.
+2. Rails then matches the route pattern, which it previously split into two
+parts and analyzed.
+The say part is taken to be the name of a controller, so Rails creates a new
+instance of the Ruby class SayController (which it finds in app/controllers/
+say_controller.rb).
+3. The next part of the pattern, hello, identifies an action. Rails invokes a
+method of that name in the controller. This action method creates a new
+Time object holding the current time and tucks it away in the @time instance
+variable.
+4. Rails looks for a template to display the result. It searches the directory
+app/views for a subdirectory with the same name as the controller (say) and
+in that subdirectory for a file named after the action (hello.html.erb).
+5. Rails processes this file through the ERB templating system, executing
+any embedded Ruby and substituting in values set up by the controller.
+6. The result is returned to the browser, and Rails finishes processing this
+request.
+

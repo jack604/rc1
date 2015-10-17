@@ -1,0 +1,24 @@
+Summary sid 199.
+Project: Any collection of multiple files and subdirectories that form a single instance of a Ruby application or library.
+
+The most common way to separate functionality in Ruby is to put different classes in
+different files. This gives you the ability to write classes that could be used in multiple
+projects simply by copying the file into your other project.
+
+Write extensions to existing classes, just use the same class name and extend with method definitions (and what else?)
+
+can put extensions in separate file and include (includes any file's code) into your project(s) with
+require keyword.
+
+load	keyword för att ladda en external source file till ens program.
+Både require och load kör programmet också men require kör det bara en gång om man skulle anropa require med samma fil flera gånger.
+
+require 'sroucefilename'
+obs, ej .rb i slutet. ibland require_relative om man behöver leta upp en fil.
+
+Libraries:
+Man använder require och module tillsammans när man skapar libraries.
+
+
+Standard library includes: Web serving and networking tools through to encryption, benchmarking, and testing routines.
+lista: http://www.ruby-doc.org/stdlib/
